@@ -1,0 +1,18 @@
+{
+  "name": "passport-verify",
+  "version": "0.1.0",
+  "description": "Web2 middleware for the Agent Passport protocol — verify an AI agent's on-chain identity and authority with a signature + read-only RPC calls. No accounts, no API keys.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": ["ai-agents", "identity", "passport", "robinhood-chain", "web3", "middleware"],
+  "license": "MIT",
+  "dependencies": {
+    "viem": "^2.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+# Foundry
+cache/
+out/
+broadcast/
+
+# JavaScript
+node_modules/
+.next/
+dist/
+.vinext/
+.wrangler/
+*.tsbuildinfo
+
+# Local state and credentials
+.env
+.env.*
+!.env.example
+*.sqlite*
+.test-output/
+.logs/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

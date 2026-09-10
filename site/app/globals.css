@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #0a0a0b;
+}
+
+body {
+  @apply bg-ink text-bone font-sans antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201, 162, 39, 0.06), transparent),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255, 255, 255, 0.008) 3px, rgba(255, 255, 255, 0.008) 4px);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(201, 162, 39, 0.35);
+}
+
+/* Thin gold rule used under headings */
+@layer components {
+  .gold-rule {
+    @apply h-px w-16 bg-gold/70;
+  }
+  .panel {
+    @apply border border-line bg-paper;
+  }
+  .input {
+    @apply w-full bg-card border border-line px-3 py-2 font-mono text-sm text-bone placeholder:text-dim/60 focus:border-gold focus:outline-none transition-colors;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 bg-gold text-ink font-mono text-xs uppercase tracking-[0.2em] px-5 py-2.5 hover:bg-goldsoft transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-line text-dim font-mono text-xs uppercase tracking-[0.2em] px-4 py-2 hover:border-gold hover:text-gold transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 border border-blood text-blood font-mono text-xs uppercase tracking-[0.2em] px-4 py-2 hover:bg-blood hover:text-bone transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .label {
+    @apply block font-mono text-[10px] uppercase tracking-[0.25em] text-dim mb-1.5;
+  }
+}
+
+/* Passport card guilloche-ish band */
+.guilloche {
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(201, 162, 39, 0.16) 0px,
+      rgba(201, 162, 39, 0.16) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(201, 162, 39, 0.1) 0px,
+      rgba(201, 162, 39, 0.1) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+.mrz {
+  letter-spacing: 0.18em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  background: rgba(232, 230, 223, 0.05);
+}
+
+:root{--font-display:Arial,sans-serif;--font-sans:Arial,sans-serif;--font-mono:"Courier New",monospace}
+html{background:#101211;scroll-behavior:smooth}body{background-image:none;font-size:16px}
+h1,h2,h3{letter-spacing:-.035em;font-weight:500}.panel{border-radius:12px}.input{border-radius:7px;min-height:44px;font-family:var(--font-sans);font-size:16px}.btn-gold,.btn-ghost,.btn-danger{border-radius:6px;min-height:44px;text-transform:none;letter-spacing:0;font-family:var(--font-sans);font-size:14px}.label{font-size:12px;letter-spacing:.06em}.font-mono{font-size:max(12px,1em)}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid #c5f86b;outline-offset:4px}
+.app-header{position:sticky;top:0;z-index:40;background:#101211f5;border-bottom:1px solid #343d30;backdrop-filter:blur(16px)}
+.app-header-top{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px}.app-brand{font-weight:700;letter-spacing:2px;font-size:20px;white-space:nowrap}.app-brand>span{color:#c5f86b;margin-right:8px}.network-select{background:#1b201a;border:1px solid #43503a;border-radius:6px;padding:9px;font-size:12px;color:#c5f86b;min-height:40px}.app-nav{max-width:1200px;margin:auto;display:flex;gap:30px;padding:0 24px 15px;overflow-x:auto}.app-nav a{color:#a5af9d;font-size:14px;white-space:nowrap}.app-nav a[aria-current],.app-nav a:hover{color:#c5f86b}
+.home-hero{max-width:1200px;margin:auto;padding:80px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:65px;align-items:center}.eyebrow{font-size:12px;letter-spacing:1.4px;color:#a5af9d}.home-hero h1{font-size:clamp(42px,4.8vw,68px);line-height:1.08;margin:26px 0}.home-hero h1 span{color:#c5f86b}.hero-description{line-height:1.8;color:#a5af9d;font-size:17px}.home-credential{background:linear-gradient(125deg,#d4e8a9,#bfd68d 65%,#9fb979);color:#24311c;padding:28px;border-radius:15px;transform:rotate(-6deg);box-shadow:20px 30px 60px #0005}.home-credential small{display:block;margin:40px 0 8px;letter-spacing:1px}.home-credential h2{font-size:32px;font-weight:600}.home-credential>p{font-size:14px;margin-top:8px}.home-credential dl{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:30px 0;border-block:1px solid #7288566b;padding:22px 0}.home-credential dt{font-size:11px;letter-spacing:.04em}.home-credential dd{font-size:13px;font-weight:600;margin-top:5px}.home-credential .credential-code{font-family:monospace;letter-spacing:2px;overflow:hidden}.home-section{max-width:1200px;margin:auto;padding:65px 24px;border-top:1px solid #343d30}.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}.home-grid>a{transition:border-color .2s,transform .2s}.home-grid>a:hover{border-color:#c5f86b;transform:translateY(-3px)}
+.site-footer{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;padding:35px 24px;border-top:1px solid #343d30;color:#a5af9d;font-size:13px}.site-footer>a:first-child{color:#c5f86b;font-weight:bold}.review-dialog{width:min(600px,94vw);max-height:85vh;background:#1b201a}.review-dialog::backdrop{background:#000b}.review-fields{margin-top:20px}.review-fields dt{color:#a5af9d;font-size:12px;margin-top:14px}.review-fields dd{font-size:14px;margin-top:4px}.skip-link{position:absolute;left:12px;top:-80px;background:#c5f86b;color:#101211;padding:12px;z-index:100}.skip-link:focus{top:8px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0}.metric{padding:24px}.metric strong{font-size:32px;display:block;margin-top:10px}.table-scroll{overflow:auto}.data-table{width:100%;text-align:left;border-collapse:collapse;min-width:600px}.data-table th,.data-table td{padding:16px;border-bottom:1px solid #343d30;font-size:14px}.data-table th{color:#a5af9d;font-weight:400}.docs-code{white-space:pre;overflow:auto;background:#101211;padding:22px;border:1px solid #343d30;border-radius:8px;font-size:13px;line-height:1.7}.notice{border-left:2px solid #c5f86b;padding:12px 18px;background:#1b201a;color:#c3cdbb;line-height:1.7}
+@media(max-width:760px){.home-hero{grid-template-columns:1fr;padding:45px 24px;gap:55px}.credential-wrap{max-width:380px;width:100%;margin:0 auto 20px}.home-grid{grid-template-columns:1fr}.app-header-top{flex-wrap:wrap;padding:16px}.app-nav{padding-inline:16px;gap:24px}.home-section{padding-block:45px}.site-footer{flex-wrap:wrap}.metrics{grid-template-columns:1fr}.app-brand{font-size:18px}.home-hero h1{font-size:clamp(38px,9vw,58px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+.app-brand{display:inline-flex;align-items:center;gap:12px}.brand-badge{width:56px;height:56px;object-fit:contain;flex-shrink:0;border-radius:4px}.passport-ticket{display:block;width:100%;height:auto;object-fit:contain}.site-footer .brand-badge{width:40px;height:40px}

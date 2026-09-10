@@ -1,0 +1,5 @@
+import {sqliteTable,text,integer,index} from 'drizzle-orm/sqlite-core';
+export const usedNonces=sqliteTable('used_nonces',{key:text('nonce_key').primaryKey(),expiresAt:integer('expires_at').notNull()},t=>[index('nonces_expiry_idx').on(t.expiresAt)]);
+export const agentConfigs=sqliteTable('agent_configs',{id:text('id').primaryKey(),owner:text('owner').notNull(),spec:text('spec').notNull(),revision:integer('revision').notNull().default(1),updatedAt:integer('updated_at').notNull()},t=>[index('agents_owner_updated_idx').on(t.owner,t.updatedAt)]);
+export const providerCredentials=sqliteTable('provider_credentials',{id:text('id').primaryKey(),owner:text('owner').notNull(),provider:text('provider').notNull(),ciphertext:text('ciphertext').notNull(),updatedAt:integer('updated_at').notNull()});
+export const agentRuns=sqliteTable('agent_runs',{id:text('id').primaryKey(),owner:text('owner').notNull(),agentId:text('agent_id').notNull(),revision:integer('revision').notNull(),status:text('status').notNull(),output:text('output').notNull().default(''),createdAt:integer('created_at').notNull()},t=>[index('runs_owner_created_idx').on(t.owner,t.createdAt)]);

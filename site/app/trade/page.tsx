@@ -1,0 +1,2 @@
+import {TradeStudio} from '@/components/TradeStudio';
+export default function Trade(){return <div className="mx-auto max-w-5xl px-6 py-12"><p className="eyebrow">ROBINHOOD CHAIN / MAINNET</p><h1 className="font-display text-4xl mt-4">Reviewed agent trading.</h1><p className="text-dim mt-4 mb-8 max-w-3xl leading-relaxed">Request a live Uniswap quote, account for the amount through a V2 passport, inspect the exact route, and approve the final wallet transaction. The adapter currently supports native ETH input and direct Uniswap AMM routes.</p><TradeStudio/></div>}

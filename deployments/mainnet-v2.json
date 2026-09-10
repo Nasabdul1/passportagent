@@ -1,0 +1,14 @@
+{
+  "chainId": 4663,
+  "deployedAt": "2026-09-10",
+  "deployer": "0x80F39b05548bF8e6AF5D377C89DC7D1DD7E44B03",
+  "agentPassport": {"address":"0x16366db87c756f7ba2d1947bcaa6c138032e0aa6","transaction":"0x5e09913f0a8aefde8904f5dce89e331056affe7d20bb42ffa59b431c9e7a89c4","block":"59281581"},
+  "agentMarket": {"address":"0x4c8075291dad60e117240e8c0aa3c0a02278baef","transaction":"0xf87ea8d1022a7d781333aa1e0cc603e8573e672eaa51669bde734427b6639071","block":"59281610"},
+  "receiptGasCostWei":"486882874024000",
+  "runtimeBytecodeVerified":true,
+  "marketPassportBindingVerified":true,
+  "websiteMigrated":true,
+  "siteVersion":7,
+  "siteSourceCommit":"0af2800bff8da34240daf1f78c4f589db479a0a6",
+  "legacyAssetsMigrated":false
+}

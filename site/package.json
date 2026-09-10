@@ -1,0 +1,40 @@
+{
+  "name": "passport-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vinext dev --port 5173",
+    "build": "vinext build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "viem": "^2.21.0",
+    "wagmi": "^2.14.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.37.1",
+    "@cloudflare/workers-types": "^4.20260515.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-rsc": "^0.5.26",
+    "autoprefixer": "^10.4.20",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "postcss": "^8.4.49",
+    "react-server-dom-webpack": "^19.3.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.0",
+    "vinext": "^1.0.0-beta.5",
+    "vite": "^8.0.13",
+    "wrangler": "^4.92.0"
+  },
+  "type": "module"
+}
