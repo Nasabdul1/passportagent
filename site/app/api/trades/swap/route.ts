@@ -1,13 +1,14 @@
 import {env} from 'cloudflare:workers';
-import {createPublicClient,http,type Hex} from 'viem';
+import {createPublicClient,type Hex} from 'viem';
 import {agentPassportAbi} from '@/lib/abis';
 import {agentStore} from '@/lib/agent-store';
 import {contracts,robinhood} from '@/lib/config';
 import {authorizeTrade,executeFields,receiptRecordsSpend,requestSwap,UNISWAP_PROVIDER} from '@/lib/trading';
 import {unseal} from '@/lib/vault';
+import {serverRobinhoodTransport} from '@/lib/server-rpc';
 
 const reply=(data:unknown,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
-const client=createPublicClient({chain:robinhood,transport:http(robinhood.rpcUrls.default.http[0],{timeout:10000,retryCount:1})});
+const client=createPublicClient({chain:robinhood,transport:serverRobinhoodTransport(10000)});
 
 export async function POST(request:Request){
  const owner=request.headers.get('oai-authenticated-user-id');if(!owner)return reply({error:'Sign in first.'},401);

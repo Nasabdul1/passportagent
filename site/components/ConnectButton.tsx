@@ -24,6 +24,7 @@ export function ConnectButton() {
   }
 
   const injected = connectors.find((c) => c.id === "injected") ?? connectors[0];
+  const walletBrowserUrl=typeof window==='undefined'?'https://passportgate.xyz':window.location.href;
   return (
     <span className="inline-flex flex-col items-end">
       <button
@@ -40,7 +41,7 @@ export function ConnectButton() {
       >
         {isPending ? "connecting…" : "connect"}
       </button>
-      {error && <span className="mt-1 font-mono text-[10px] text-blood max-w-56 text-right">{error}</span>}
+      {error && <span className="mt-1 max-w-72 text-right text-xs leading-relaxed text-blood">{error} <button type="button" className="text-gold underline" onClick={()=>navigator.clipboard.writeText(walletBrowserUrl)}>Copy this page</button></span>}
     </span>
   );
 }

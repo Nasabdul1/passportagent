@@ -1,5 +1,5 @@
 import {env} from 'cloudflare:workers';
-import {createPublicClient,http,type Hex} from 'viem';
+import {createPublicClient,type Hex} from 'viem';
 import {robinhood,contracts} from '@/lib/config';
 import {agentPassportAbi} from '@/lib/abis';
 import {agentStore} from '@/lib/agent-store';
@@ -8,8 +8,9 @@ import {unseal} from '@/lib/vault';
 import {callModel} from '@/lib/model-adapters';
 import {runFields,authorizeRun} from '@/lib/run-authorization';
 import {actionId} from '@/lib/message';
+import {serverRobinhoodTransport} from '@/lib/server-rpc';
 const reply=(data:unknown,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
-const client=createPublicClient({chain:robinhood,transport:http(robinhood.rpcUrls.default.http[0],{retryCount:1,timeout:10000})});
+const client=createPublicClient({chain:robinhood,transport:serverRobinhoodTransport(10000)});
 export async function GET(request:Request){const owner=request.headers.get('oai-authenticated-user-id');if(!owner)return reply({error:'Sign in first.'},401);try{const r=await agentStore().prepare('SELECT id,agent_id,revision,status,output,created_at FROM agent_runs WHERE owner=? ORDER BY created_at DESC LIMIT 20').bind(owner).all();return reply({runs:r.results});}catch{return reply({error:'Run history unavailable.'},503);}}
 export async function POST(request:Request){const owner=request.headers.get('oai-authenticated-user-id');if(!owner)return reply({error:'Sign in first.'},401);if(request.headers.get('origin')!==new URL(request.url).origin)return reply({error:'Origin mismatch.'},403);let runId:string|undefined;const db=agentStore();try{const raw=await request.text();if(raw.length>14000)return reply({error:'Request too large.'},413);const x=JSON.parse(raw);if(typeof x.id!=='string'||!Number.isSafeInteger(x.revision)||typeof x.prompt!=='string'||!x.prompt.trim()||x.prompt.length>8000||typeof x.signature!=='string'||!/^0x[a-fA-F0-9]{130}$/.test(x.signature)||!Number.isSafeInteger(x.deadline))return reply({error:'Invalid signed run.'},400);
  const row=await db.prepare('SELECT spec,revision FROM agent_configs WHERE id=? AND owner=?').bind(x.id,owner).first();if(!row||row.revision!==x.revision)return reply({error:'Save and reload this agent before running.'},409);const spec=validateAgent(JSON.parse(String(row.spec)));const credential=await db.prepare('SELECT ciphertext FROM provider_credentials WHERE id=? AND owner=?').bind(owner+':'+spec.provider,owner).first();if(!credential)return reply({error:'Connect your provider API key first.'},400);

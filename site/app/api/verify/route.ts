@@ -1,10 +1,11 @@
 import {env} from 'cloudflare:workers';
-import {createPublicClient,http} from 'viem';
+import {createPublicClient} from 'viem';
 import {robinhood,contracts} from '@/lib/config';
 import {agentPassportAbi} from '@/lib/abis';
 import {verifyEnvelope} from '@/lib/verify-envelope';
+import {serverRobinhoodTransport} from '@/lib/server-rpc';
 export const dynamic='force-dynamic';
-const client=createPublicClient({chain:robinhood,transport:http(robinhood.rpcUrls.default.http[0],{timeout:12000,retryCount:1})});
+const client=createPublicClient({chain:robinhood,transport:serverRobinhoodTransport()});
 export async function POST(request:Request){
  const headers={'Cache-Control':'no-store','Content-Type':'application/json'};
  const respond=(data:unknown,status:number)=>new Response(JSON.stringify(data),{status,headers});

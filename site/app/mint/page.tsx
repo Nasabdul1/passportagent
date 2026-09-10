@@ -99,6 +99,7 @@ export default function MintPage() {
         You are the <span className="text-bone">controller</span> — the accountable owner. The agent address is the wallet
         that will carry this identity. Everything you set here is checked by the deployed contract when a consuming service verifies an action.
       </p>
+      <p className="notice mt-6">Integrating an external agent platform? The <a className="text-gold" href="/docs#agent-api">Passport API</a> prepares the exact mainnet issuance transaction for the controller to sign, then verifies the agent before each API action.</p>
 
       {!isConnected && (
         <div className="panel mt-8 p-5 text-center font-mono text-xs uppercase tracking-[0.25em] text-dim">

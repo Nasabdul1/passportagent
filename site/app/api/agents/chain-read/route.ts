@@ -1,10 +1,11 @@
-import {createPublicClient,http} from 'viem';
+import {createPublicClient} from 'viem';
 import {robinhood,contracts} from '@/lib/config';
 import {agentPassportAbi} from '@/lib/abis';
 import {agentStore} from '@/lib/agent-store';
 import {gatedChainRead} from '@/lib/chain-read-gate';
+import {serverRobinhoodTransport} from '@/lib/server-rpc';
 export const dynamic='force-dynamic';
-const client=createPublicClient({chain:robinhood,transport:http(robinhood.rpcUrls.default.http[0],{timeout:10000,retryCount:1})});
+const client=createPublicClient({chain:robinhood,transport:serverRobinhoodTransport(10000)});
 export async function POST(request:Request){
  const reply=(data:unknown,status:number)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
  try{
