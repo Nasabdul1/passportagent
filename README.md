@@ -43,8 +43,8 @@ passport-verify/      Signed Web2 verification middleware
 Install Foundry, clone with submodules, then run:
 
 ```bash
-git clone --recurse-submodules https://github.com/Nasabdul1/passport-agent-identity.git
-cd passport-agent-identity
+git clone --recurse-submodules https://github.com/Nasabdul1/passportagent.git
+cd passportagent
 forge build
 forge test
 ```
